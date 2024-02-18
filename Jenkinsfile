@@ -31,7 +31,7 @@ pipeline
                 }
             }
         }
-        stage('Run Docker Compose') {
+        stage('Build Images and Run Docker Compose') {
             steps {
                 script {
                     // Make sure Docker Compose is installed
@@ -51,24 +51,24 @@ pipeline
            steps {
              script {
             // Tagging and pushing the first image
-            sh 'docker tag webjob-web:latest varha/myonlineapp-webjob-web:newimagev1'
+            sh 'docker tag demo-web:latest varha/myonlineapp-demo-web:newimageec21'
             
             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub_id', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]) {
                 sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
             }
-            sh 'docker push varha/myonlineapp-webjob-web:newimagev1'
+            sh 'docker push varha/myonlineapp-demo-web:newimageec21'
 
             // Tagging and pushing the second image
-            sh 'docker tag mysql:latest varha/myonlineapp-mysql:newimagev2'
-            sh 'docker push varha/myonlineapp-mysql:newimagev2'
+            sh 'docker tag mysql:latest varha/myonlineapp-mysql:newimageec22'
+            sh 'docker push varha/myonlineapp-mysql:newimageec22'
            }
          }
        }
     }   
     post {
         always {
-              // Cleanup or additional steps
-            sh 'docker-compose down'
+              echo "Cleanup or additional steps"
+          //  sh 'docker-compose down'
        }
     }
 }
