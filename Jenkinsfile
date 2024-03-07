@@ -42,8 +42,8 @@ pipeline
                     }
 
                     // Run Docker Compose
-                    sh ' sudo docker-compose build'
-                    sh ' sudo docker-compose up -d'
+                    //sh ' sudo docker-compose build'
+                    //sh ' sudo docker-compose up -d'
                 }
             }
         }
