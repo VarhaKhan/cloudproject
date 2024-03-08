@@ -47,7 +47,7 @@ pipeline
 
                     // Run Docker Compose
                       sh 'docker-compose build'
-                 //   sh 'docker-compose up -d'
+                      sh 'docker-compose up -d'
                 }
             }
         }
@@ -72,7 +72,7 @@ pipeline
     post {
         always {
               // Cleanup or additional steps
-            sh 'docker-compose down'
+            // sh 'docker-compose down'
        }
     }
 }
