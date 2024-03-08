@@ -46,7 +46,7 @@ pipeline
                     echo "Docker-compose version: ${dockercomposeVersion}"
 
                     // Run Docker Compose
-                      sh 'sudo docker-compose build'
+                      sh 'docker-compose build'
                  //   sh 'docker-compose up -d'
                 }
             }
