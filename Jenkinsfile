@@ -41,6 +41,10 @@ pipeline
                         error('Docker Compose is not installed. Please install Docker Compose on the Jenkins agent.')
                     }
 
+                    // Check Docker-compose version
+                    def dockercomposeVersion = sh(script: 'docker-compose --version', returnStdout: true).trim()
+                    echo "Docker-compose version: ${dockercomposeVersion}"
+
                     // Run Docker Compose
                     sh 'docker-compose build'
                     sh 'docker-compose up -d'
