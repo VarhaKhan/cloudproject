@@ -73,7 +73,7 @@ pipeline
         always {
                echo "Composedown-need to be done"
               // Cleanup or additional steps
-             // sh 'docker-compose down'
+              sh 'docker-compose down'
        }
     }
 }
